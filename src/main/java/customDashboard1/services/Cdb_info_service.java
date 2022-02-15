@@ -10,4 +10,6 @@ public interface Cdb_info_service {
    Cdb_info getById(int id);
 
    List<Cdb_info> findAllInfo();
+
+   int updateInfo(Cdb_info cdb_info, long id);
 }

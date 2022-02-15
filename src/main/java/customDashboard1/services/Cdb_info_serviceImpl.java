@@ -27,4 +27,10 @@ public class Cdb_info_serviceImpl implements Cdb_info_service {
     public List<Cdb_info> findAllInfo(){
         return cdbInfo_repo.findAllInfo();
     }
+
+    @Override
+    public int updateInfo(Cdb_info cdb_info, long id){
+        return cdbInfo_repo.updateInfo(cdb_info,id);
+    }
+
 }

@@ -21,23 +21,14 @@ public class CdbInfo_RepoImpl implements CdbInfo_Repo{
 
     private static final String get_all_info="select * from cdb_info";
 
+    private static final String update_query="update cdb_info set id=?, secret=? where id=?";
+
     @Override
     public void save(Cdb_info cdb_info) {
         int[] types = {Types.VARCHAR, Types.VARCHAR};
         Object[] args={cdb_info.getId(),cdb_info.getSecret()};
         jdbcTemplate.update(insert_query,args,types);
     }
-
-//    @Override
-//    public Cdb_info getById(int id) {
-//        return jdbcTemplate.queryForObject(get_all_cdbInfo,
-//                new Object[]{id},
-//                (rs, rowNum) -> {
-//                    Cdb_info cdb = new Cdb_info();
-//                    cdb.setSecret(rs.getString("Secret"));
-//                    return cdb;
-//                });
-//    }
 
     @Override
     public Cdb_info getById(int id) {
@@ -49,5 +40,12 @@ public class CdbInfo_RepoImpl implements CdbInfo_Repo{
     public List<Cdb_info> findAllInfo(){
         List<Cdb_info> cdb_infos=jdbcTemplate.query(get_all_info,new CdbInfoMapper());
         return cdb_infos;
+    }
+
+    @Override
+    public int updateInfo(Cdb_info cdb_info, long id){
+        Object[] params = {cdb_info.getId(),cdb_info.getSecret(),id};
+        int[] types = {Types.VARCHAR, Types.VARCHAR, Types.LONGVARCHAR};
+        return jdbcTemplate.update(update_query,params,types);
     }
 }

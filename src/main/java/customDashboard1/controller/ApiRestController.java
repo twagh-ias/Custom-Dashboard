@@ -23,10 +23,15 @@ public class ApiRestController {
     @Autowired
     JdbcTemplate jdbcTemplate;
 
-    @PostMapping("/InsertInfo")
+    @PostMapping("/insertInfo")
     public void save(Cdb_info cdb_info)
     {
         cdb_info_service.save(cdb_info);
+    }
+
+    @PutMapping("/updateInfo/{id}")
+    public void updateInfo(Cdb_info cdb_info, @PathVariable long id){
+        cdb_info_service.updateInfo(cdb_info,id);
     }
 
     @GetMapping("/getInfo/{id}")
