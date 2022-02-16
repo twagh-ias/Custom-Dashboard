@@ -8,4 +8,4 @@ http://localhost:8080/customDashboard/getAll
 http://localhost:8080/customDashboard/insertInfo
 
 #Update into cdb_info table
-http://localhost:8080/customDashboard/updateInfo
+http://localhost:8080/customDashboard/updateInfo/{id}
